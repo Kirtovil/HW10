@@ -22,8 +22,12 @@ public class Author {
     public String toString() {
         return " Автрор - " + this.name + " " + this.surname;
     }
+
     public boolean equals(Object other) {
-        if (this.getClass() != other.getClass()) {
+        if (this == other) {
+            return true;
+        }
+        if (other == null || getClass() != other.getClass()) {
             return false;
         }
         Author a = (Author) other;
