@@ -33,16 +33,15 @@ public class Book {
         return "Название книги - " + this.bookName +"." + authorName + ". год издания - " + this.publishingYear;
     }
 
-    public boolean equals(Object other) {
-        if(this == other) return true;
-        if (other == null || this.getClass() != other.getClass()) {
-            return false;
-        }
-        Book a = (Book) other;
-        return bookName.equals(a.bookName);
-
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Book book = (Book) o;
+        return publishingYear == book.publishingYear && Objects.equals(bookName, book.bookName) && Objects.equals(authorName, book.authorName);
     }
 
+    @Override
     public int hashCode() {
         return Objects.hash(bookName, authorName, publishingYear);
     }
